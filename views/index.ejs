@@ -1,0 +1,22 @@
+<%- include('layouts/header.ejs') %>
+<h1 class="leones">Leones<span class="list">List</span> <span id="day"></span> <p id="date-year"></p></h1> 
+    <h2 id="ucapan" class="line-1 anim-typewriter" ></h2>
+    <br>
+    <form action="/" method="post">
+        <input type="text"  required name="text" placeholder="Write To-Do...">
+        <button type="submit">+ADD</button>
+    </form>
+<!-- <a href="/kalender" class="btn btn-primary">Kalender</a> -->
+    <br>
+
+        <% for(todo of todos) { %>
+            <!-- <h4 for="<%= todo._id %>" id="text"><%= todo.text %></label> -->
+                <div class="p-3 bg-info bg-opacity-10 border border-info border-start-0 rounded-end">
+ <h3><%= todo.text %></h3>
+                    <form action="/todo/<%= todo._id %>?_method=DELETE" method="post">
+                        <button type="submit" class="btn btn-danger">Selesai</button>
+                    </form>
+                  </div>
+    <br>
+        <% } %>
+    <%- include('layouts/footer.ejs') %>

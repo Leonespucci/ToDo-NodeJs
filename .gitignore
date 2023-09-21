@@ -1,0 +1,10 @@
+# Ini adalah contoh .gitignore
+# File build
+build/
+dist/
+
+# File log
+*.log
+
+# Direktori node_modules
+node_modules/

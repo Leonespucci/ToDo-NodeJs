@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kalender</title>
+    <style>
+        /* Gaya untuk kalender */
+        table {
+            border-collapse: collapse;
+            width: 300px;
+            margin: 0 auto;
+        }
+
+        th, td {
+            border: 1px solid black;
+            text-align: center;
+            padding: 5px;
+        }
+
+        th {
+            background-color: #ccc;
+        }
+
+        td {
+            cursor: pointer;
+        }
+
+        /* Gaya untuk hari Minggu */
+        td:first-child {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="kalender"></div>
+
+    <script>
+        function buatKalender() {
+            var kalender = document.getElementById("kalender");
+            var tanggalSekarang = new Date();
+            var bulanIni = new Date(tanggalSekarang.getFullYear(), tanggalSekarang.getMonth(), 1);
+            var hariIni = tanggalSekarang.getDate();
+            var hariDalamBulan = new Date(tanggalSekarang.getFullYear(), tanggalSekarang.getMonth() + 1, 0).getDate();
+            var hariPertama = new Date(tanggalSekarang.getFullYear(), tanggalSekarang.getMonth(), 1).getDay();
+            
+            var namaHari = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
+            var namaBulan = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+            
+            var tabel = "<table>";
+            tabel += "<tr><th colspan='7'>"+ hariIni + " " + namaBulan[tanggalSekarang.getMonth()] + " " + tanggalSekarang.getFullYear() + "</th></tr>";
+            tabel += "<tr>";
+            
+            // Membuat header dengan nama hari
+            for (var i = 0; i < 7; i++) {
+                tabel += "<th>" + namaHari[i] + "</th>";
+            }
+            
+            tabel += "</tr><tr>";
+            
+            var tanggal = 1;
+            for (var i = 0; i < 42; i++) {
+                if (i < hariPertama || tanggal > hariDalamBulan) {
+                    tabel += "<td></td>";
+                } else {
+                    if (tanggal === hariIni) {
+                        tabel += "<td><strong>" + tanggal + "</strong></td>";
+                    } else {
+                        tabel += "<td>" + tanggal + "</td>";
+                    }
+                    tanggal++;
+                }
+                
+                if ((i + 1) % 7 === 0) {
+                    tabel += "</tr>";
+                }
+            }
+            
+            tabel += "</table>";
+            kalender.innerHTML = tabel;
+        }
+
+        // Memanggil fungsi untuk membuat kalender
+        buatKalender();
+                                       datenow.innerText = `${tanggal}/${bulan}/${tahun} `
+    </script>
+</body>
+</html>

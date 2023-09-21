@@ -1,0 +1,56 @@
+<script>
+    const datenow = document.getElementById('date-year')
+    let ucapan = document.getElementById('ucapan')
+     const detikElement = document.getElementById('detik')
+      const dayElement = document.getElementById('day')
+
+      const day = new Date()
+      const hari = day.getDay();
+      const tanggal = day.getDate();
+      const bulan = day.getMonth();
+      const tahun = day.getFullYear();
+
+      dayElement.innerText = `${tanggal}/${bulan}/${tahun}`
+
+       function perbarui() {
+             const time = new Date()
+              const jam = time.getHours();
+              const menit = time.getUTCMinutes();                                              
+             const detik = time.getUTCSeconds();
+             datenow.innerText = `${jam}:${menit}:${detik}`
+     }
+     perbarui()
+     setInterval(perbarui, 1000)
+                                                                                      pesan = 'Selamat Malam,' + nama
+     // Mendapatkan jam saat ini (dalam format 24 jam)
+var jam = new Date().getHours();
+
+// Nama penerima
+var nama = 'Ramadhani';
+
+// Pesan selamat
+var pesanSelamat = "";
+
+switch (true) {
+    case jam >= 03 && jam < 12:
+        pesanSelamat = "Selamat pagi, " + nama;
+        break;
+    case jam >= 12 && jam < 18:
+        pesanSelamat = "Selamat siang, " + nama;
+        break;
+    case jam >= 18 && jam < 19:
+        pesanSelamat = "Selamat sore, " + nama;
+        break;
+    default:
+        pesanSelamat = "Selamat malam, " + nama;
+        break;
+}        
+
+ucapan.innerText = pesanSelamat
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
